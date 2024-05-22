@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scraper</title>
+  <style>
+	h1{
+		text-align: center;
+	}
+	.input-div{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	#input{
+		height: 30px;
+		width: 80%;
+		max-width: 400px;
+		padding-left: 10px;
+		margin: 20px 0px;
+		font-size: 1.2rem;
+	}
+	#scrape-btn{
+		padding: 5px;
+		font-size: 1rem;
+		cursor: pointer;
+	}
+	li{
+		margin-bottom: 5px;
+	}
+
+  </style>
+</head>
+<body>
+	<h1>Jumia Scraper</h1>
+	<div class="input-div">
+		<input type="text" id="input" placeholder="Enter Keyword">
+  		<button id="scrape-btn">Scrape Data</button>
+	</div>
+  
+  <div id="results"></div>
+
+  <script>
+    const scrapeBtn = document.getElementById('scrape-btn');
+    const resultsDiv = document.getElementById('results');
+	
+	
+    scrapeBtn.addEventListener('click', async () => {
+      try {
+		const keyword = document.getElementById('input').value;
+		console.log(keyword)
+		const response = await fetch('/scrape', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({keyword}),
+      });
+        const data = await response.json();
+		data.imageSrc = new Image();
+        const html = `
+          <h2>Scraped Data:</h2>
+          <ul>
+            ${data.map(item => `<li> <img src="${item.imageSrc}" alt="scraped image"> Description:${item.name}, Currrent Price: ${item.newPrice}</li>`).join('')}
+          </ul>
+        `;
+        resultsDiv.innerHTML = html;
+      } catch (error) {
+        resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>
