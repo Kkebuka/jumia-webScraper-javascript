@@ -35,7 +35,7 @@ app.listen(port, () => {
 
 async function goodInfo(keyword) {
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         defaultViewport: null,
     });
     
@@ -57,8 +57,11 @@ async function goodInfo(keyword) {
     await page.waitForNavigation();
     
     while(nextPage){
+        await page.waitForSelector('img.img');
+        await page.setDefaultNavigationTimeout(30000);
+        
         const detailsOnPage =await page.evaluate(() => {
-
+            
             const TotalDetails = document.querySelectorAll('.core');
             
             const info = Array.from(TotalDetails).map((singleDetail) => {
