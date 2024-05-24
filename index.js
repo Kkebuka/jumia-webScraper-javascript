@@ -40,7 +40,7 @@ async function goodInfo(keyword) {
     });
     
     const page = await browser.newPage();
-    await page.setViewport({ width: 1920, height: 1080 });
+    await page.setViewport({ width: 1246    , height: 1914 });
 
     await page.goto('https://jumia.com.ng', {
         waitUntil: "domcontentloaded",
@@ -58,13 +58,14 @@ async function goodInfo(keyword) {
     await page.waitForNavigation();
     
     while(nextPage){
-        await page.waitForNetworkIdle();
+        // await page.waitForNetworkIdle();
 
         await page.waitForSelector('.img', { timeout: 30000 });
         await page.evaluate(() => {
-            window.scrollTo(0, document.body.scrollHeight);
-          });          
-        
+            window.scrollBy(0, window.innerHeight); // Scroll down by the height of the viewport
+        });
+        await delay(2000);
+
         const detailsOnPage =await page.evaluate(() => {
             
 
