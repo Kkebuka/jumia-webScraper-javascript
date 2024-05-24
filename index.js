@@ -40,7 +40,7 @@ async function goodInfo(keyword) {
     });
     
     const page = await browser.newPage();
-    await page.setViewport({ width: 1246    , height: 1914 });
+    // await page.setViewport({ width: 1246    , height: 900 });
 
     await page.goto('https://jumia.com.ng', {
         waitUntil: "domcontentloaded",
@@ -58,17 +58,53 @@ async function goodInfo(keyword) {
     await page.waitForNavigation();
     
     while(nextPage){
-        // await page.waitForNetworkIdle();
+        
 
-        await page.waitForSelector('.img', { timeout: 30000 });
+        // await page.waitForSelector('.img', { timeout: 3000 });
+        // await page.waitForSelector('.aim');
+        
+        // console.log('waiting for nav')
+
+        // await page.waitForNetworkIdle();
+       
+        // await page.evaluate(() => {
+            // console.log('scroll-down')
+            // window.scrollBy(0, window.innerHeight); // Scroll down by the height of the viewport
+
+            // setTimeout(() => {
+                // console.log('scroll-up')
+                // window.scrollBy(0, -window.innerHeight);
+                // window.scrollBy(0, window.innerHeight);  
+            // }, 3000);
+        // });
+        
+        await page.waitForNetworkIdle();
+
+        
+        console.log("one")
         await page.evaluate(() => {
-            window.scrollBy(0, window.innerHeight); // Scroll down by the height of the viewport
-        });
-        await delay(2000);
+            const scrollStep = 100; // adjust this value to control the scroll speed
+            const scrollInterval = 100; // adjust this value to control the scroll interval
+          
+            return new Promise((resolve) => {
+              let currentScrollPosition = 0;
+              let intervalId = setInterval(() => {
+                window.scrollTo(0, currentScrollPosition);
+                currentScrollPosition += scrollStep;
+          
+                if (currentScrollPosition >= document.body.scrollHeight) {
+                  clearInterval(intervalId);
+                  resolve();
+                }
+              }, scrollInterval);
+            });
+          });
+       
+          console.log('four')
 
         const detailsOnPage =await page.evaluate(() => {
             
-
+            
             const TotalDetails = document.querySelectorAll('.core');
             
             const info = Array.from(TotalDetails).map((singleDetail) => {
@@ -81,7 +117,7 @@ async function goodInfo(keyword) {
             console.log(info)
             return info;
         });
-        
+    
         allInfo.push(...detailsOnPage);
         
         try {
