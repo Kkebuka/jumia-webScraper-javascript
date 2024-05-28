@@ -2,34 +2,7 @@
 <html>
 <head>
   <title>Scraper</title>
-  <style>
-	h1{
-		text-align: center;
-	}
-	.input-div{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	#input{
-		height: 30px;
-		width: 80%;
-		max-width: 400px;
-		padding-left: 10px;
-		margin: 20px 0px;
-		font-size: 1.2rem;
-	}
-	#scrape-btn{
-		padding: 5px;
-		font-size: 1rem;
-		cursor: pointer;
-	}
-	li{
-		margin-bottom: 5px;
-	}
 
-  </style>
 </head>
 <body>
 	<h1>Jumia Scraper</h1>
@@ -49,7 +22,7 @@
       try {
 		const keyword = document.getElementById('input').value;
 		console.log(keyword)
-		const response = await fetch('/scrape', {
+		const response = await fetch('http://localhost:3000/scrape', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({keyword}),
