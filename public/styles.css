@@ -21,7 +21,7 @@ h1{
 	cursor: pointer;
 }
 li{
-	margin-bottom: 5px;
+	margin: 5px;
 }
 ul{
     display: flex;
