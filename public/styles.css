@@ -37,3 +37,6 @@ li{
 	gap: 10px;
 	flex-direction: column;
 }
+span {
+	color: green;
+}
