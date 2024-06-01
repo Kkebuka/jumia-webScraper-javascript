@@ -20,14 +20,20 @@ h1{
 	font-size: 1rem;
 	cursor: pointer;
 }
-li{
-	margin: 5px;
+#result {
+	width: 100%;
+	height: auto;
 }
-ul{width: 100%;
+ul{
+	width: 100%;
     display: flex;
 	flex-wrap: wrap;
 }
 li{
+	width: 250px;
+	height: 300px;
+	margin: 5px;
 	display: flex;
+	gap: 10px;
 	flex-direction: column;
 }
