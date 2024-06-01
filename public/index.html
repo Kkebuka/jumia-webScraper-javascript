@@ -33,7 +33,7 @@
         const html = `
           <h2>Scraped Data:</h2>
           <ul>
-            ${data.map(item => `<li> <img src="${item.imageSrc}" alt="scraped image"> Description:${item.name}, Currrent Price: ${item.newPrice}</li>`).join('')}
+            ${data.map(item => `<li> <img src="${item.imageSrc}" alt="scraped image"> Description:${item.name}, Currrent Price: <span> ${item.newPrice}</span></li>`).join('')}
           </ul>
         `;
         resultsDiv.innerHTML = html;
