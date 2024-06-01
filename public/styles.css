@@ -23,7 +23,7 @@ h1{
 li{
 	margin: 5px;
 }
-ul{
+ul{width: 100%;
     display: flex;
 	flex-wrap: wrap;
 }
