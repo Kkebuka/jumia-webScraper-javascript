@@ -31,8 +31,8 @@ ul{
 }
 li{
 	width: 250px;
-	height: 300px;
-	margin: 5px;
+	height: 400px;
+	margin: 5px 5px;
 	display: flex;
 	gap: 10px;
 	flex-direction: column;
