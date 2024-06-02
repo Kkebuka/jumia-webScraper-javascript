@@ -78,7 +78,7 @@ async function goodInfo(keyword) {
             // }, 3000);
         // });
         
-        await page.waitForNetworkIdle();
+        // await page.waitForNetworkIdle();
 
         
         console.log("one")
