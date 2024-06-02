@@ -17,9 +17,11 @@
     const scrapeBtn = document.getElementById('scrape-btn');
     const resultsDiv = document.getElementById('results');
 	
+
 	
     scrapeBtn.addEventListener('click', async () => {
-      // scrapeBtn.disabled = true;
+      scrapeBtn.disabled = true;
+      resultsDiv.innerHTML= '<h2>Your search is in process</h2>'; 
       try {
 		const keyword = document.getElementById('input').value;
 		console.log(keyword)
@@ -40,6 +42,8 @@
       } catch (error) {
         resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
       }
+
+      scrapeBtn.disabled = false;
     });
   </script>
 </body>
