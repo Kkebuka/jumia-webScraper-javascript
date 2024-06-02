@@ -37,7 +37,11 @@ li{
 	gap: 10px;
 	flex-direction: column;
 	border: 2px solid gray;
+	padding: 0px 5px;
 }
 span {
 	color: green;
+}
+h2 {
+	text-align: center;
 }
