@@ -40,7 +40,7 @@
         `;
         resultsDiv.innerHTML = html;
       } catch (error) {
-        resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+        resultsDiv.innerHTML = `<p>An error occured, please check your network and try again..Error: ${error.message}</p>`;
       }
 
       scrapeBtn.disabled = false;
